@@ -1,18 +1,13 @@
-# About Arboreus Articles
+# About Arboreus Wiki Public
 
-This repository is the collector of articles written based on real experience (more then 20 years on various languages) of developing real application or at least on performed tests and benchmarks. For now oriented on Erlang developing and using no-SQL DB Mnesia.
+This repository is the collector of who-to manual for the technology stack that using in developing by Arboreus Staff and related to.
 
-Mostly over this repository you will find articles for the purpose of the topics:
-
-* Erlang: most of examples of the developing on pure Erlang
-* Data Storages: the Arboreus System specialised on developing Data Storages on Erlang
-* Blockchain: you might to find here architectural descriptions for the case of developing blockchain implementations for the various situations
-* Environment that we are using for our solutions
-* Data security for the case of using Data Storages and Client applications
-* Some less important topics anyway connected to our specialisation
+* Erlang: configuring and developing solutions for big data storages and access to it within ability to analyse it
+* FreeBSD: configuring and maintaining it like primary OS
+* Other topic somehow related to the previous 2
 
 In case of using any materials from this repository - follow license. Any kind of using without mentioning author and the company - prohibited. In other cases we will happily provide any additional information by request.
 
 If you find any grammar mistakes or any other inaccuracy - do not hesitate to notice about it the owners of this repository. We will gladly analyze your notice and if it need correct it.
 
-Always opened for any kind of discussion related to our specialisation.
+Always opened for any kind of discussion related to our this articles.
