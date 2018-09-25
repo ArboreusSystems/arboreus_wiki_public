@@ -1,4 +1,4 @@
-# Install Gitolite on Freebsd 11
+# Install Gitolite on FreeBSD 11
 
 ## Prerequisites
 
