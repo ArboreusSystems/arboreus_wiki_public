@@ -4,7 +4,7 @@ The creating the SSL certificate possible in some ways
 
 * First way
 ```console
-$ mkdir /path/to/certificte/location
+$ mkdir /path/to/certificte/location && cd /path/to/certificte/location
 $ openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -keyout /path/to/certificte/location/selfsigned.key -out /path/to/certificte/location/selfsigned.crt
 ```
 * Second way
