@@ -1,4 +1,4 @@
-# Install Wiki.js and Apache SSL on FreeBSD 11
+# Install Wiki.js on FreeBSD 11
 
 ## Prerequisites 
 
