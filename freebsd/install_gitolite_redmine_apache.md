@@ -37,7 +37,7 @@ $ exit
 $ nano /path/to/git/.gitolite.rc
 
 >>> NOTICE!
->>> Change the permition for repository folders in the .gitolite.rc
+>>> Change the permission for repository folders in the .gitolite.rc
 
 >>> UMASK                           =>  0027,
 
@@ -124,9 +124,165 @@ $ gem install mysql2
 
 #### 5. [Generate SSL](https://github.com/ArboreusSystems/arboreus_wiki_public/blob/master/freebsd/self_signed_ssl_certificate_creating.md)
 
-#### 5. Install Redmine
+#### 6. Install Redmine
 
+```console
+$ mkdir /path/to/www/redmine
+$ cd /path/to/www/redmine
+$ curl http://www.redmine.org/releases/redmine-3.4.6.tar.gz --output redmine.tar.gz 
 
+>>> NOTICE!
+>>> Download and extract it from archive
 
-7. Fix Redmine + Git "no-color" problem
-8. Setting Redmine up
+$ bundle install --without development test postgresql sqlite
+$ gem install passenger
+$ passenger-install-apache2-module
+$ cp /usr/local/etc/apache24/httpd.conf /usr/local/etc/apache24/httpd.conf.default && nano /usr/local/etc/apache24/httpd.conf
+$ cd /usr/local/etc/apache24/Includes && nano passenger.conf
+
+>>> NOTICE!
+>>> Add this lines to passenger.conf
+
+>>>LoadModule passenger_module /usr/local/lib/ruby/gems/2.4/gems/passenger-5.3.4/buildout/apache2/mod_passenger.so
+>>>   <IfModule mod_passenger.c>
+>>>     PassengerRoot /usr/local/lib/ruby/gems/2.4/gems/passenger-5.3.4
+>>>     PassengerDefaultRuby /usr/local/bin/ruby24
+>>>   </IfModule>
+
+$ cd /usr/local/etc/apache24/Includes && nano virtual_hosts.conf
+
+>>> NOTICE!
+>>> Add this lines to virtual_hosts.conf
+
+>>> Listen 60001
+>>> SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
+>>> SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4
+>>> SSLHonorCipherOrder on
+>>> SSLProtocol all -SSLv3
+>>> SSLProxyProtocol all -SSLv3
+>>> SSLPassPhraseDialog  builtin
+>>> SSLSessionCache        "shmcb:/var/run/ssl_scache(512000)"
+>>> SSLSessionCacheTimeout  300
+
+>>> PassengerMaxPoolSize 3
+>>> PassengerPoolIdleTime 150
+>>> PassengerMaxInstancesPerApp 1
+
+>>> <VirtualHost _default_:8080>
+
+>>>    DocumentRoot "/path/to/www/default"
+>>>    ServerName server.name:8080
+>>>    ServerAdmin mail@server.domain
+>>>    ErrorLog "/path/to/www/log/httpd-error.log"
+>>>    TransferLog "/path/to/www/log/httpd-access.log"
+
+>>>    SSLEngine on
+>>>    SSLCertificateFile "/path/to/www/ssl/keys/server.crt"
+>>>    SSLCertificateKeyFile "/path/to/www/ssl/kys/server.key"
+
+>>>    <FilesMatch "\.(cgi|shtml|phtml|php)$">
+>>>        SSLOptions +StdEnvVars
+>>>    </FilesMatch>
+
+>>>    <Directory "/path/to/www/cgi-bin">
+>>>        SSLOptions +StdEnvVars
+>>>    </Directory>
+
+>>>    Alias /redmine "/path/to/www/redmine/"
+
+>>>    <Directory /path/to/www/redmine>
+>>>        AllowOverride all
+>>>        Require all granted
+>>>        Options +Indexes +FollowSymLinks -MultiViews
+>>>        Order allow,deny
+>>>        Allow from all
+>>>        RailsEnv production
+>>>        PassengerAppRoot /path/to/www/redmine
+>>>        PassengerUser www
+>>>        PassengerGroup git
+>>>        RailsBaseURI /redmine
+>>>    </Directory>
+
+>>>    CustomLog "/path/to/www/log/httpd-ssl_request.log" \
+>>>          "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+
+>>> </VirtualHost>
+
+$ nano /usr/local/etc/apache24/httpd.conf
+
+>>> NOTICE!
+>>> Add this lines to httpd.conf
+
+>>>    ServerName server.name:8080
+>>>    ServerAdmin mail@server.domain
+
+>>> LoadModule ssl_module libexec/apache24/mod_ssl.so
+>>> LoadModule socache_shmcb_module libexec/apache24/mod_socache_shmcb.so
+
+$ cp /path/to/www/redmine/config/database.yml.example /projects/www/redmine/config/database.yml
+$ nano /path/to/www/redmine/config/database.yml
+
+>>> NOTICE!
+>>> Install the DB settings to Redmine configuration 
+
+>>> production:
+>>>   adapter: mysql2
+>>>   database: redmine
+>>>   host: localhost
+>>>   username: redmine
+>>>   password: "password"
+>>>   encoding: utf8
+
+$ cp /path/to/www/redmine/config/configuration.yml.example //path/to/www/redmine/config/configuration.yml
+$ nano /path/to/www/redmine/config/configuration.yml
+
+>>> email_delivery:
+>>>     delivery_method: :smtp
+>>>     smtp_settings:
+>>>       enable_starttls_auto: true
+>>>       address: "smtp.gmail.com"
+>>>       port: 587
+>>>       domain: "smtp.gmail.com"
+>>>       authentication: :plain
+>>>       user_name: "alexandr.bogong@gmail.com"
+>>>       password: “password_here”
+
+$ cd /path/to/www/redmine
+$ gem install bundler
+$ bundle install --without development test
+$ bundle exec rake generate_secret_token
+$ RAILS_ENV=production bundle exec rake db:migrate
+$ RAILS_ENV=production bundle exec rake redmine:load_default_data
+$ chown -R www:www /path/to/www/
+$ pw usermod www -G git
+$ service apache24 restart
+$ bundle exec rails server webrick -e production
+```
+
+#### 7. Fix Redmine + Git "no-color" problem
+
+```console
+$ nano /usr/local/sbin/git
+
+>>> NOTICE!
+>>> Add this lines to this /usr/local/sbin/git
+
+>>> #!/usr/local/bin/bash
+>>> 
+>>> # The latest git version (2.14.1) removes the --no-color option which breaks existing redmine/git
+>>> # support.  We remove this option from the provided arguments until redmine fixes this,
+>>> # presumably in redmine 3.4.3
+>>> # Issue #305
+>>> 
+>>> REAL_GIT="/usr/local/bin/git"
+>>> $REAL_GIT "${@%--no-color}"
+
+$ chmod +x /usr/local/sbin/git
+$ /usr/local/sbin/git —version —no-color
+$ nano /path/to/www/redmine/config/configuration.yml
+
+>>> NOTICE!
+>>> Add the path to fixed Git into the Redmine configuration file and restart Apache
+
+>>> scm_git_command: /usr/local/sbin/git
+```
