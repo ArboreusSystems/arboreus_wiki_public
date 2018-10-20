@@ -219,7 +219,7 @@ $ nano /usr/local/etc/apache24/httpd.conf
 >>> LoadModule ssl_module libexec/apache24/mod_ssl.so
 >>> LoadModule socache_shmcb_module libexec/apache24/mod_socache_shmcb.so
 
-$ cp /path/to/www/redmine/config/database.yml.example /projects/www/redmine/config/database.yml
+$ cp /path/to/www/redmine/config/database.yml.example /path/to/www/redmine/config/database.yml
 $ nano /path/to/www/redmine/config/database.yml
 
 >>> NOTICE!
@@ -244,7 +244,7 @@ $ nano /path/to/www/redmine/config/configuration.yml
 >>>       port: 587
 >>>       domain: "smtp.gmail.com"
 >>>       authentication: :plain
->>>       user_name: "alexandr.bogong@gmail.com"
+>>>       user_name: "your_mail@gmail.com"
 >>>       password: “password_here”
 
 $ cd /path/to/www/redmine
