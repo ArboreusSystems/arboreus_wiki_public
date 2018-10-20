@@ -9,8 +9,8 @@ On Server:
 $ cd /usr/ports/devel/git && make install clean
 $ cd /usr/ports/devel/gitolite && make install clean 
 
-# NOTICE!
-# Add the user at time of configuring Gitolite
+>>> NOTICE!
+>>> Add the user at time of configuring Gitolite
 
 $ chsh -s /usr/local/bin/bash git
 $ chmod g-w /path/to/git/
@@ -19,7 +19,7 @@ $ pw usermod git -d /path/to/git
 ```
 On Client:
 ```console
-# Copy the user SSH key.pub to /tmp on server
+>>> Copy the user SSH key.pub to /tmp on server
 ```
 
 2. Install MySQL
