@@ -2,7 +2,7 @@
 
 This installation guide done in the jail operated by Ezjail on Freebsd.  
 
-1. Install Gitolite
+### Install Gitolite
 
 On Server:
 ```console
