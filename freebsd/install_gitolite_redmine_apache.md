@@ -233,7 +233,7 @@ $ nano /path/to/www/redmine/config/database.yml
 >>>   password: "password"
 >>>   encoding: utf8
 
-$ cp /path/to/www/redmine/config/configuration.yml.example //path/to/www/redmine/config/configuration.yml
+$ cp /path/to/www/redmine/config/configuration.yml.example /path/to/www/redmine/config/configuration.yml
 $ nano /path/to/www/redmine/config/configuration.yml
 
 >>> email_delivery:
