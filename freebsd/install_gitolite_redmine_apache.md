@@ -84,10 +84,49 @@ $ mysql -u redmine -p
 >>> > exit
 ```
 
+#### 3. Install Apache
 
-3. Install Apache
-4. Install Ruby, Ruby-Gems, Ruby-Iconv
-5. [Generate SSL](https://github.com/ArboreusSystems/arboreus_wiki_public/blob/master/freebsd/self_signed_ssl_certificate_creating.md)
-6. Install Redmine
+```console
+$ pkg install apr 
+
+>>> NOTICE!
+>>> There was found the problem with installing this package through the ports, available only like package
+
+$ cd /usr/ports/www/apache24/ && make BATCH=yes install clean
+$ chsh -s /usr/local/bin/bash www
+$ mkdir /path/to/www /path/to/www/log /path/to/www/cgi-bin /path/to/www/default
+$ cd /path/to/www/log && touch httpd-error.log && touch httpd-access.log && touch httpd-ssl_request.log
+$ pw usermod www -d /path/to/www
+$ nano /etc/rc.conf
+
+>>> NOTICE!
+>>> Add this line to rc.conf 
+>>> # Apache start
+>>> apache24_enable="YES"
+
+$ chown -R www:www /path/to/www
+```
+
+#### 4. Install Ruby, Ruby-Gems, Ruby-Iconv
+
+```console
+$ cd /usr/ports/devel/ruby-gems/ && make install clean
+$ gem install iconv -v 1.0.5 
+
+>>> NOTICE!
+>>> If need  - change the version
+
+$ cd /usr/ports/graphics/ImageMagick/ && make install clean
+$ gem install bundler
+$ gem install mysql2
+```
+
+
+#### 5. [Generate SSL](https://github.com/ArboreusSystems/arboreus_wiki_public/blob/master/freebsd/self_signed_ssl_certificate_creating.md)
+
+#### 5. Install Redmine
+
+
+
 7. Fix Redmine + Git "no-color" problem
 8. Setting Redmine up
