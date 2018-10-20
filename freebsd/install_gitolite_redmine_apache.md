@@ -1,17 +1,25 @@
 # Install Gitolite, Redmine, Apache on FreeBSD 11.
 
-This installation guide done in the jail operated by Ezjail on Freebsd.  
+This installation guide done in the jail operated by Ezjail on Freebsd 11.  
 
 #### 1. Install Gitolite
 
 On Server:
 ```console
 $ cd /usr/ports/devel/git && make install clean
-$ cd /usr/ports/devel/gitolite && make install clean (Add git user in properties)
+$ cd /usr/ports/devel/gitolite && make install clean 
+
+# NOTICE!
+# Add the user at time of configuring Gitolite
+
 $ chsh -s /usr/local/bin/bash git
-$ chmod g-w /projects/git/
-$ mkdir /projects/git && chown git:git /projects/git
-$ pw usermod git -d /projects/git
+$ chmod g-w /path/to/git/
+$ mkdir /path/to/git && chown git:git /path/to/git
+$ pw usermod git -d /path/to/git
+```
+On Client:
+```console
+# Copy the user SSH key.pub to /tmp on server
 ```
 
 2. Install MySQL
