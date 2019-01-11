@@ -5,7 +5,8 @@ The module for getting current time in different formats. Available like [Erlang
 ## Install and compile
 
 * Download or Clone Arboreus repository from [Gituhb](https://github.com/ArboreusSystems/arboreus_library)
-* Use [make](https://en.wikipedia.org/wiki/Make_(software)) utility for installing and compiling ```console $/path/to/Arboreus/make install a_time```
+* Use [make](https://en.wikipedia.org/wiki/Make_(software)) utility for installing and compiling 
+```console $/path/to/Arboreus/make install a_time```
 
 ## Console application usage
 
@@ -60,7 +61,7 @@ Before make sure that a_time_now.so (NIF library object file) loaded into Erlang
 * **a_time_now:rfc_850()** -> return current date and time like RFC 850 string
 * **a_time_now:ansi()** -> return current date and time like ANSI string 
 
-```erlang
+```console
 Eshell V10.0  (abort with ^G)
 (a_time@workstation.local)1> cd("/path/to/Arboreus/ebin/a_time").
 /path/to/Arboreus/ebin/a_time
