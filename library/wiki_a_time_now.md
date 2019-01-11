@@ -6,7 +6,9 @@ The module for getting current time in different formats. Available like [Erlang
 
 * Download or Clone Arboreus repository from [Gituhb](https://github.com/ArboreusSystems/arboreus_library)
 * Use [make](https://en.wikipedia.org/wiki/Make_(software)) utility for installing and compiling 
-```console $/path/to/Arboreus/make install a_time```
+```console 
+$/path/to/Arboreus/make install a_time
+```
 
 ## Console application usage
 
