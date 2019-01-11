@@ -15,13 +15,13 @@ $ /path/to/Arboreus/make install a_time
 * **./a_time_now microseconds** - return current time like UNIX-timestamp in microseconds
 * **./a_time_now milliseconds** - return current time like UNIX-timestamp in milliseconds
 * **./a_time_now seconds** - return current time like UNIX-timestamp in seconds
-* **./atime_now integer** - return current time like integer
-* **./atime_now integer_date** - return current date like integer
-* **./atime_now integer_full** - return current date and time like integer
-* **./atime_now integer_extend** - return current date and time within microseconds precise like integer
-* **./atime_now rfc_822** - return current date and time like RFC 822 string
-* **./atime_now rfc_850** - return current date and time like RFC 850 string
-* **./atime_now ansi** - return current date and time like ANSI string
+* **./a_time_now integer** - return current time like integer
+* **./a_time_now integer_date** - return current date like integer
+* **./a_time_now integer_full** - return current date and time like integer
+* **./a_time_now integer_extend** - return current date and time within microseconds precise like integer
+* **./a_time_now rfc_822** - return current date and time like RFC 822 string
+* **./a_time_now rfc_850** - return current date and time like RFC 850 string
+* **./a_time_now ansi** - return current date and time like ANSI string
 
 ```console
 $ cd /path/to/Arboreus/bin/a_time
