@@ -11,7 +11,8 @@ $ nano directories.conf.mk
 H_DIRECTORIES = \
 	-I/path/to/Erlang/21.0/erts-10.0/include/
 ```
-* Use [make](https://en.wikipedia.org/wiki/Make_(software)) utility for installing and compiling 
+* Use [make](https://en.wikipedia.org/wiki/Make_(software)) utility for installing and compiling. Check the name of part of library. If you need all of parts - use "all"
 ```console 
 $ /path/to/Arboreus/make install a_time
+$ /path/to/Arboreus/make install all
 ```
