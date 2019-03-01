@@ -1,4 +1,4 @@
-# Building static libzip library on MacOS High Sierra
+# Building libzip library on MacOS High Sierra
 
 Libzip version: 1.5.1
 Target OS: MacOS High Sierra
@@ -10,20 +10,21 @@ Installed dependency:
 
 For building shared/static [libzip](https://libzip.org) you need:
 
-* Install all libraries that required above
+* To be installed all libraries that required above
 ```console
 $ brew install zlib
 $ brew install ...
 ```
 * Make sure that you have [CMake](https://cmake.org) installed and working perfectly
 * Download sources from [libzip.org](https://libzip.org/download/) or repository on [Github](https://github.com/nih-at/libzip/)
-* If you need to make libzib like static library add this lines to [path/to/libzip/directory]/lib/CMakeLists.txt
+* If you need to make libzib like static library (*.a) add this lines to end of [path/to/libzip/directory]/lib/CMakeLists.txt
 ```cmake
 ADD_LIBRARY(zipstatic STATIC 
 	${LIBZIP_SOURCES}
 	${LIBZIP_EXTRA_FILES}
 	${LIBZIP_OPTIONAL_FILES}
-	${LIBZIP_OPSYS_FILES})
+	${LIBZIP_OPSYS_FILES}
+)
 ```
 * Create build directory
 ```console
