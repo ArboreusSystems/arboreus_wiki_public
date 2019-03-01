@@ -16,7 +16,7 @@ $ brew install ...
 ```
 * Make sure that you have [CMake](https://cmake.org) installed and working perfectly
 * Download sources from [libzip.org](https://libzip.org/download/) or repository on [Github](https://github.com/nih-at/libzip/)
-* If you need to make libzib like static library (*.a) add this lines to end of [path/to/libzip/directory]/lib/CMakeLists.txt
+* If you need to make libzib like static library (\*.a) add this lines to end of [path/to/libzip/directory]/lib/CMakeLists.txt
 ```cmake
 ADD_LIBRARY(zipstatic STATIC 
 	${LIBZIP_SOURCES}
