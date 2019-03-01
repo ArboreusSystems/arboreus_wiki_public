@@ -4,7 +4,6 @@ Libzip version: 1.5.1
 Target OS: MacOS High Sierra
 Installed dependency:
 
-* NETTLE: /usr/local/lib/libnettle.dylib
 * OpenSSL: /usr/lib/libcrypto.dylib (found version "1.0.2o")
 * ZLIB: /usr/lib/libz.dylib (found version "1.2.11")
 * BZip2: /usr/lib/libbz2.dylib (found version "1.0.6")
@@ -14,7 +13,6 @@ For building shared/static [libzip](https://libzip.org) you need:
 * Install all libraries that required above
 ```console
 $ brew install zlib
-$ brew install nettle
 $ brew install ...
 ```
 * Make sure that you have [CMake](https://cmake.org) installed and working perfectly
