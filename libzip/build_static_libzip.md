@@ -1,11 +1,11 @@
 # Building libzip library on MacOS High Sierra
 
-* Libzip version: 1.5.1
-* Target OS: MacOS High Sierra
-* Installed dependency:
-** OpenSSL: /usr/lib/libcrypto.dylib (found version "1.0.2o")
-** ZLIB: /usr/lib/libz.dylib (found version "1.2.11")
-** BZip2: /usr/lib/libbz2.dylib (found version "1.0.6")
+Libzip version: 1.5.1, Target OS: MacOS High Sierra
+
+Installed dependency:
+* OpenSSL: /usr/lib/libcrypto.dylib (found version "1.0.2o")
+* ZLIB: /usr/lib/libz.dylib (found version "1.2.11")
+* BZip2: /usr/lib/libbz2.dylib (found version "1.0.6")
 
 For building shared/static [libzip](https://libzip.org) you need:
 
