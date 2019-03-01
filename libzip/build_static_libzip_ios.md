@@ -41,7 +41,7 @@ C_FLAGS += -fPIC -fvisibility=hidden
 
 C_FLAGS = -fPIC -fvisibility=hidden
 ```
-* Do installation process in [path/to/libzip/directory]/build
+* Do installation process in [path/to/libzip/directory]/build (there are going to be errors, do not care about it because by default CMake script from vendors doesn't supposed to fit cross-platform compile)
 ```console
 $ cd [path/to/libzip/directory]/build
 $ make
