@@ -1,9 +1,7 @@
 # Building libzip library on MacOS High Sierra
 
 Libzip version: 1.5.1
-
 Target OS: MacOS High Sierra
-
 Installed dependency:
 
 * OpenSSL: /usr/lib/libcrypto.dylib (found version "1.0.2o")
