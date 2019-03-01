@@ -24,7 +24,7 @@ ADD_LIBRARY(zipstatic STATIC
 	${LIBZIP_EXTRA_FILES}
 	${LIBZIP_OPTIONAL_FILES}
 	${LIBZIP_OPSYS_FILES}
-)
+	)
 ```
 * Create build directory
 ```console
