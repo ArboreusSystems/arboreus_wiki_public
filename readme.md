@@ -11,5 +11,3 @@ In case of using any materials from this repository - follow license. Any kind o
 If you find any grammar mistakes or any other inaccuracy - do not hesitate to notice about it the owners of this repository. We will gladly analyze your notice and if it need correct it.
 
 Always opened for any kind of discussion related to our this articles.
-
-##
